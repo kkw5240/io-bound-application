@@ -17,7 +17,7 @@ public class PostController {
     PostRepository postRepository;
 
     // 1. 글을 작성한다.
-    @PostMapping("/post")
+    @PostMapping("/posts")
     public Post createPost(@RequestBody Post post) {
         return postRepository.save(post);
     }
@@ -30,9 +30,11 @@ public class PostController {
         );
     }
     
-    // 2-2 글 목록을 페이징하여 반환
-    
     // 3. 글 번호로 조회
+    @GetMapping("/posts/{id}")
+    public Post getPostById(@PathVariable("id") Long id) {
+        return postRepository.findById(id).get();
+    }
     
     // 4. 글 내용으로 검색 -> 해당 내용이 포함된 모든 글
 

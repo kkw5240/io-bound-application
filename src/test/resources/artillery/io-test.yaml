@@ -1,17 +1,24 @@
 config:
-  target: "http://localhost:1882"
+  target: "http://{nginx-ip}"
   phases:
-    - duration: 333
+    - duration: 60
       arrivalRate: 3
       name: Warm up
+    - duration: 120
+      arrivalRate: 3
+      rampTo: 100
+      name: Ramp up load
+    - duration: 600
+      arrivalRate: 100
+      name: Sustained load
   payload:
-    path: "../test-data/ratings_test_1k.csv"
+    path: "ratings_test_10k.csv"
     fields:
       - "content"
-  scenarios:
-    - name: "just get content"
-      flow:
-        - post:
-            url: "/posts"
-            json:
-              content: "{{ content }}"
+scenarios:
+  - name: "just post content"
+    flow:
+      - post:
+          url: "/post"
+          json:
+            content:  "{{ content }}"

@@ -24,11 +24,13 @@ server:
 spring:
   config:
     activate:
-    on-profile: prod
+      on-profile: prod
   datasource:
     url: jdbc:postgresql://postgresql-instance-1.cfce96mjt0tp.ap-northeast-2.rds.amazonaws.com:5432/postgresql
     username: postgresql
     password: postgrespassword
+  jpa:
+    show-sql: false
   rabbitmq:
     host: 172.31.41.173
     username: guest

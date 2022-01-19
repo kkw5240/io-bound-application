@@ -1,5 +1,5 @@
 config:
-  target: "http://localhost:1882"
+  target: "http://54.180.145.11"
   phases:
     - duration: 60
       arrivalRate: 3
@@ -12,7 +12,7 @@ config:
       arrivalRate: 50
       name: Sustained load
   payload:
-    path: "ratings_test_10k.csv"
+    path: "../test-data/ratings_test_10k.csv"
     fields:
       - "content"
 scenarios:

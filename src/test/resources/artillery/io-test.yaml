@@ -19,7 +19,7 @@ scenarios:
   - name: "just post content"
     flow:
       - post:
-          url: "/post"
+          url: "/posts"
           json:
             content:  "{{ content }}"
       - think: 1
